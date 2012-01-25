@@ -1,0 +1,9 @@
+<script>
+chrome.extension.onRequest.addListener(
+  function(request, sender, sendResponse) {
+      if (window.localStorage == null || window.localStorage.gridsizex == null || window.localStorage.gridsizey == null || request.greeting != "get_settings")
+	  sendResponse({});
+      else
+          sendResponse({farewell: {"gridsizex" : window.localStorage.gridsizex, "gridsizey" : window.localStorage.gridsizey} });
+  });
+</script>

@@ -1,0 +1,62 @@
+<!DOCTYPE>
+<!-- Leftronic Hack
+     Raymond Zhong (hello@raymondzhong.com)
+     MIT License -->
+
+<html><head><title>Leftronic Hack Options</title>
+<style>
+
+form.option {
+  font-size: 13px;
+  width: 200px;
+  font-family: Segoe UI, Segoe, Tahoma, sans-serif; 
+  padding: 10px;
+  margin: 10px;
+  padding-top: 0px;
+  border: 1px solid #444;
+  border-radius: 5px;
+}
+form.option h4 { line-height: 0; }
+form.option input { margin: 4px; }
+
+</style>
+
+<script type="text/javascript">
+
+function save() {
+    window.localStorage.gridsizex = document.getElementById("gridsize-x").value;
+    window.localStorage.gridsizey = document.getElementById("gridsize-y").value;
+}
+
+function resize(color) {
+  chrome.tabs.executeScript(null,
+      {code:"LeftronicConfig.gridX = " + window.localStorage.x +
+       "; LeftronicConfig.gridY = " + window.localStorage.y +
+       "; dashboardManager.resizeGrid(); "});
+  window.close();
+}
+
+  if (window.localStorage == null) {
+    alert("LocalStorage must be enabled for changing options.");
+    document.getElementById('gridsize-x').disabled = true;
+    document.getElementById('gridsize-y').disabled = true;
+    return;
+  }
+</script>
+</head><body>
+
+<div style="font-family: Segoe UI, Segoe, Tahoma, sans-serif; line-height: 1.6;">
+  <strong>Leftronic Hack</strong><br/>
+  
+  <form class="option">
+    <h4>Change dashboard grid size:</h4>
+    <label>Width: <input type="text" value="24" id="gridsize-x" /></label><br/>
+    <label>Height: <input type="text" value="12" id="gridsize-y" /></label><br/>
+    <input type="submit" value="Save" onclick="save();" />
+  </form>
+
+<script type="text/javascript">
+  document.getElementById('gridsize-x').value = window.localStorage.gridsizex;
+  document.getElementById('gridsize-y').value = window.localStorage.gridsizey;
+</script>
+</body></html>
