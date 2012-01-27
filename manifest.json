@@ -5,10 +5,15 @@
   "options_page": "options.html",
   "background_page": "background.html",
   "content_scripts": [
-    { "matches": ["https://beta.leftronic.com/app/*", "http://beta.leftronic.com/app/*"], "js": ["leftronic_hack.js"], "run_at": "document_end" } 
+    { "matches": ["https://beta.leftronic.com/app/*", "http://beta.leftronic.com/app/*", 
+      		  "https://beta.leftronic.com/share/*", "http://beta.leftronic.com/share/*"], 
+      "js": ["leftronic_hack.js"], 
+      "run_at": "document_end" } 
     ], 
   "permissions": [
-    "https://beta.leftronic.com/*",
-    "http://beta.leftronic.com/*"
+    "https://beta.leftronic.com/app/*",
+    "http://beta.leftronic.com/app/*",
+    "https://beta.leftronic.com/share/*",
+    "http://beta.leftronic.com/share/*"
   ]
 }
